@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Low Poly Guns\Scripts\GunsMenu.cs" />
+    <Compile Include="Assets\TurretMovement.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\ShieldItem.cs" />
     <Compile Include="Assets\Scripts\StrengthItem.cs" />
@@ -67,7 +68,6 @@
     <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
-    <Compile Include="Assets\TurretMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

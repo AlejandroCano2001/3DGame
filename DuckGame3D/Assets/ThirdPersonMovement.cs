@@ -57,7 +57,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
-            rb.velocity = moveDir * speed;
+            rb.velocity = moveDir * speed; // TENGO QUE ACTUALIZAR LA VARIABLE "SPEED"
         }
         else
         {

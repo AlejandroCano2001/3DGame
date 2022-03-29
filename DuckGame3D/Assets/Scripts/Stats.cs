@@ -25,13 +25,21 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public void reduceSpeed()
+    {
+        float duration = 0;
+        float initialSpeed = this.speed;
+
+        this.speed = 2f;
+    }
+
     public void Die()
     {
         //Animation clip
         anim.SetTrigger("Die");
         isDead = true;
 
-        Invoke("destroyObject", 2f);
+        Invoke("destroyObject", 3f);
 
     }
 

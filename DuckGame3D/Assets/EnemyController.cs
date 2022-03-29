@@ -24,21 +24,24 @@ public class EnemyController : MonoBehaviour
     {
         if(!GetComponent<Stats>().isDead)
         {
-            float distance = Vector3.Distance(target.position, transform.position);
-
-            if (distance <= radius)
+            if(target != null)
             {
-                agent.SetDestination(target.position);
+                float distance = Vector3.Distance(target.position, transform.position);
 
-                if (distance <= agent.stoppingDistance)
+                if (distance <= radius)
                 {
-                    //Attack
-                    //Face the target
-                    FaceTarget();
-                }
-            }
+                    agent.SetDestination(target.position);
 
-            anim.SetBool("Running", agent.velocity != Vector3.zero);
+                    if (distance <= agent.stoppingDistance)
+                    {
+                        //Attack
+                        //Face the target
+                        FaceTarget();
+                    }
+                }
+
+                anim.SetBool("Running", agent.velocity != Vector3.zero);
+            }
         }
     }
 
