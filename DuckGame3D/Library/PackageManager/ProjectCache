@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637832246556841006
-    m_Hash: 1701834483
+      ticks: 637835686066535811
+    m_Hash: 3917961422
   m_LockFileStatus:
     m_FilePath: C:/Alejandro/DuckGame3D/DuckGame3D/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637832246556926386
-    m_Hash: 4090308907
+      ticks: 637835686066535811
+    m_Hash: 526405139
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
