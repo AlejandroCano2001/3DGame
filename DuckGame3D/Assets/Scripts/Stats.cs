@@ -31,7 +31,12 @@ public class Stats : MonoBehaviour
         anim.SetTrigger("Die");
         isDead = true;
 
-        //Destroy(gameObject);
+        Invoke("destroyObject", 2f);
 
+    }
+
+    private void destroyObject()
+    {
+        Destroy(gameObject);
     }
 }

@@ -10,6 +10,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public LayerMask groundMask;
     public float jumpHeight = 10;
     public Animator anim;
+    public float cadence = 1f;
 
     private float speed;
     private float rotVelocity = 10f;
@@ -32,6 +33,8 @@ public class ThirdPersonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cadence += Time.deltaTime;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if(Input.GetButtonDown("Jump"))
@@ -63,8 +66,9 @@ public class ThirdPersonMovement : MonoBehaviour
 
         anim.SetFloat("Speed", rb.velocity.magnitude);
 
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1") && cadence >= 0.5f)
         {
+            cadence = 0f;
             Attack();
         }
     }
