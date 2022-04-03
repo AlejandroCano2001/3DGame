@@ -11,17 +11,21 @@ public class PlayerHub : MonoBehaviour
     public Text Damage;
     
     private Stats playerStats;
+    private ThirdPersonMovement playerMovement;
 
     void Start() 
     {
         playerStats = GetComponent<Stats>();
+        playerMovement = GetComponent<ThirdPersonMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float speed = playerStats.speed + playerMovement.addedSpeed;
+
         health.text = playerStats.health.ToString();
-        Speed.text = playerStats.speed.ToString();
+        Speed.text = speed.ToString();
         Shield.text = playerStats.shield.ToString();
         Damage.text = playerStats.damage.ToString();
     }

@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BulletBehaviour.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunsMenu.cs" />
     <Compile Include="Assets\TurretMovement.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
+    <Compile Include="Assets\Laser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

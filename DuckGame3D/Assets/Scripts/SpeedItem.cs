@@ -8,7 +8,7 @@ public class SpeedItem : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.gameObject.GetComponent<Stats>().speed += 5; 
+            other.gameObject.GetComponent<ThirdPersonMovement>().addedSpeed += 0.2f; 
 
             Destroy(gameObject);
         }

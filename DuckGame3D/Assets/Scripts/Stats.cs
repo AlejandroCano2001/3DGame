@@ -27,10 +27,7 @@ public class Stats : MonoBehaviour
 
     public void reduceSpeed()
     {
-        float duration = 0;
-        float initialSpeed = this.speed;
-
-        this.speed = 2f;
+        
     }
 
     public void Die()
@@ -39,12 +36,7 @@ public class Stats : MonoBehaviour
         anim.SetTrigger("Die");
         isDead = true;
 
-        Invoke("destroyObject", 3f);
+        Destroy(gameObject, 5f);
 
-    }
-
-    private void destroyObject()
-    {
-        Destroy(gameObject);
     }
 }

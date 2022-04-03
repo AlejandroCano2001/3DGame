@@ -11,6 +11,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float jumpHeight = 10;
     public Animator anim;
     public float cadence = 1f;
+    public float addedSpeed = 1f;
 
     private float speed;
     private float rotVelocity = 10f;
@@ -31,45 +32,49 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         cadence += Time.deltaTime;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(Input.GetButtonDown("Jump"))
+        if (!GetComponent<Stats>().isDead)
         {
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-            anim.SetTrigger("Jump");
-        }
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+                anim.SetTrigger("Jump");
+            }
 
-        float vertical = Input.GetAxisRaw("Vertical");
-        float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            float horizontal = Input.GetAxisRaw("Horizontal");
 
-        Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
+            Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(dir.magnitude > 0.1f)
-        {
-            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
+            if (dir.magnitude > 0.1f)
+            {
+                float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                
+                Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotVelocity * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotVelocity * Time.deltaTime);
 
-            Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+                Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
-            rb.velocity = moveDir * speed; // TENGO QUE ACTUALIZAR LA VARIABLE "SPEED"
-        }
-        else
-        {
-            rb.velocity = Vector3.zero;
-        }
+                rb.velocity = moveDir * speed * addedSpeed;
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
 
-        anim.SetFloat("Speed", rb.velocity.magnitude);
+            anim.SetFloat("Speed", rb.velocity.magnitude);
 
-        if(Input.GetButtonDown("Fire1") && cadence >= 0.5f)
-        {
-            cadence = 0f;
-            Attack();
+            if (Input.GetButtonDown("Fire1") && cadence >= 0.5f)
+            {
+                cadence = 0f;
+                Attack();
+            }
         }
     }
 
