@@ -65,10 +65,10 @@ public class TurretMovement : MonoBehaviour
                     Invoke("TurnOffLaser", 0.1f);
                 }
             }
-        }
-        else
-        {
-            enemyFound = false;
+            else
+            {
+                enemyFound = false;
+            }
         }
     }
 

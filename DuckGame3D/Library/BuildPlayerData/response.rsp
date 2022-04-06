@@ -8,6 +8,7 @@
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PlayerScriptAssemblies\Unity.ProBuilder.Csg.dll"
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PlayerScriptAssemblies\Unity.ProBuilder.dll"
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PlayerScriptAssemblies\UnityEngine.UI.dll"
+-a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PlayerScriptAssemblies\Unity.ProGrids.dll"
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PlayerScriptAssemblies\Unity.ProBuilder.Poly2Tri.dll"
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\AOT\Newtonsoft.Json.dll"
 -a="C:\Alejandro\DuckGame3D\DuckGame3D\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Portable\Newtonsoft.Json.dll"

@@ -63,13 +63,14 @@
     <Compile Include="Assets\Scripts\ShieldItem.cs" />
     <Compile Include="Assets\Scripts\StrengthItem.cs" />
     <Compile Include="Assets\PlayerHub.cs" />
+    <Compile Include="Assets\Laser.cs" />
     <Compile Include="Assets\ThirdPersonMovement.cs" />
     <Compile Include="Assets\Scripts\HealthItem.cs" />
     <Compile Include="Assets\Scripts\SpeedItem.cs" />
     <Compile Include="Assets\EnemyController.cs" />
     <Compile Include="Assets\PlayerManager.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
-    <Compile Include="Assets\Laser.cs" />
+    <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

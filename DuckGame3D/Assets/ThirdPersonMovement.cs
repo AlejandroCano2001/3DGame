@@ -32,7 +32,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         cadence += Time.deltaTime;
 
@@ -62,10 +62,6 @@ public class ThirdPersonMovement : MonoBehaviour
                 Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
                 rb.velocity = moveDir * speed * addedSpeed;
-            }
-            else
-            {
-                rb.velocity = Vector3.zero;
             }
 
             anim.SetFloat("Speed", rb.velocity.magnitude);
