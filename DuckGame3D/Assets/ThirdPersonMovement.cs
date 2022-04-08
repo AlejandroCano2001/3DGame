@@ -14,9 +14,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public float addedSpeed = 1f;
 
     private float speed;
-    private float rotVelocity = 10f;
+    private float rotVelocity = 8f;
     private bool isGrounded;
     private Rigidbody rb;
+    private bool justJumped = false;
 
     // Attacking variables
     public Transform attackPoint;
@@ -40,10 +41,11 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (!GetComponent<Stats>().isDead)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (justJumped)
             {
                 rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
                 anim.SetTrigger("Jump");
+                justJumped = false;
             }
 
             float vertical = Input.GetAxisRaw("Vertical");
@@ -51,26 +53,28 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
 
-            if (dir.magnitude > 0.1f)
-            {
-                float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-                
-                Quaternion rotation = Quaternion.Euler(0f, angle, 0f);
+            Quaternion rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotVelocity * Time.deltaTime);
 
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotVelocity * Time.deltaTime);
+            rb.MovePosition(transform.position + rotation * dir * speed * Time.deltaTime);
 
-                Vector3 moveDir = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+            anim.SetFloat("Speed", dir.magnitude);
+        }
+    }
 
-                rb.velocity = moveDir * speed * addedSpeed;
-            }
+    private void Update()
+    {
+        speed = GetComponent<Stats>().speed;
 
-            anim.SetFloat("Speed", rb.velocity.magnitude);
+        if (Input.GetButtonDown("Jump"))
+        {
+            justJumped = true;
+        }
 
-            if (Input.GetButtonDown("Fire1") && cadence >= 0.5f)
-            {
-                cadence = 0f;
-                Attack();
-            }
+        if (Input.GetButtonDown("Fire1") && cadence >= 0.5f)
+        {
+            cadence = 0f;
+            Attack();
         }
     }
 
