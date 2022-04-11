@@ -48,8 +48,8 @@ public class TurretMovement : MonoBehaviour
 
                 if(shootingSpeed >= 1 && !hit.collider.gameObject.GetComponent<Stats>().isDead)
                 {
-                    Debug.Log("gunTip position: " + gun.transform.position);
-                    Debug.Log("hit point position: " + hit.point);
+                    //Debug.Log("gunTip position: " + gun.transform.position);
+                    //Debug.Log("hit point position: " + hit.point);
 
                     lineRenderer.SetPosition(0, gunTip.transform.position);
                     lineRenderer.SetPosition(1, hit.point);

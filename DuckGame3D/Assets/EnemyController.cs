@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public LayerMask enemyLayers;
 
+    private Transform threateningArea;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,18 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Bullet bullet = FindObjectOfType<Bullet>();
+
+        if (bullet != null)
+        {
+            threateningArea = bullet.getZoneAttack();
+
+            //Flee
+            Debug.Log("Threat found");
+
+
+        }
+
         attackingSpeed -= Time.deltaTime;
 
         if(!GetComponent<Stats>().isDead)

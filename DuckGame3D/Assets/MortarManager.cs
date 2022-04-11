@@ -5,26 +5,36 @@ using UnityEngine;
 public class MortarManager : MonoBehaviour
 {
     public Transform mortar;
+    public Transform shootingSpot;
+    public GameObject bulletPrefab;
+    public float r = 25f;
     
     private Transform target;
-    private float rotationSpeed = 5f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-
-        if(enemy != null)
-        {
-            target = enemy.transform;
-
-            Debug.Log("Objeto encontrado: " + enemy.name);
-        }
-    }
+    private float cadence = 2f;
 
     // Update is called once per frame
     void Update()
     {
-        mortar.LookAt(target);
+        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
+        cadence -= Time.deltaTime;
+
+        if (enemy != null)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            target = enemy.transform;
+
+            //Debug.Log("Distance: " + distance + "; Radius: " + r);
+
+            if (distance <= r)
+            {
+                mortar.LookAt(target);
+
+                if (cadence <= 0)
+                {
+                    Instantiate(bulletPrefab, shootingSpot.position, Quaternion.identity);
+                    cadence = 2f;
+                }
+            }
+        }
     }
 }
