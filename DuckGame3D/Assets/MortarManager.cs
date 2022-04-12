@@ -10,7 +10,7 @@ public class MortarManager : MonoBehaviour
     public float r = 25f;
     
     private Transform target;
-    private float cadence = 2f;
+    private float cadence = 4f;
 
     // Update is called once per frame
     void Update()
@@ -32,7 +32,7 @@ public class MortarManager : MonoBehaviour
                 if (cadence <= 0)
                 {
                     Instantiate(bulletPrefab, shootingSpot.position, Quaternion.identity);
-                    cadence = 2f;
+                    cadence = 8f;
                 }
             }
         }

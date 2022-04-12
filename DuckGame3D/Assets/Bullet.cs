@@ -33,6 +33,8 @@ public class Bullet : MonoBehaviour
                 (pointB.position.y - pointA.position.y) / time - 0.5f * g * time, (pointB.position.z - pointA.position.z) / time);
 
         Gravity = Vector3.zero;
+
+        Destroy(gameObject, time);
     }
 
     void FixedUpdate()

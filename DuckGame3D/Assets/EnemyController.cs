@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public LayerMask enemyLayers;
 
-    private Transform threateningArea;
+    private bool threatened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().speed;
+        agent.autoRepath = true;
     }
 
     // Update is called once per frame
@@ -32,14 +33,20 @@ public class EnemyController : MonoBehaviour
     {
         Bullet bullet = FindObjectOfType<Bullet>();
 
+        Debug.Log(bullet == null);
+
         if (bullet != null)
         {
-            threateningArea = bullet.getZoneAttack();
+            threatened = true;
 
+            gameObject.transform.LookAt(bullet.transform);
+            
             //Flee
-            Debug.Log("Threat found");
-
-
+            agent.SetDestination(new Vector3(transform.position.x - 4, transform.position.y, transform.position.z));
+        }
+        else
+        {
+            threatened = false;
         }
 
         attackingSpeed -= Time.deltaTime;
@@ -50,7 +57,7 @@ public class EnemyController : MonoBehaviour
             {
                 float distance = Vector3.Distance(target.position, transform.position);
 
-                if (distance <= radius)
+                if (distance <= radius && !threatened)
                 {
                     agent.SetDestination(target.position);
 
