@@ -15,6 +15,7 @@ public class MortarManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         cadence -= Time.deltaTime;
 
