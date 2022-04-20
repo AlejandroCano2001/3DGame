@@ -17,17 +17,15 @@ public class Stats : MonoBehaviour
         //Debug.Log("I've taken damage");
         anim.SetTrigger("TakeDamage");
         
-        this.health = this.health - damage + (0.15f * this.shield);
-
+        if(this.health > 0)
+        {
+            this.health = this.health - damage + (0.15f * this.shield);
+        }
+        
         if(health <= 0 & !isDead)
         {
             Die();
         }
-    }
-
-    public void reduceSpeed()
-    {
-        
     }
 
     public void Die()
@@ -37,6 +35,5 @@ public class Stats : MonoBehaviour
         isDead = true;
 
         Destroy(gameObject, 5f);
-
     }
 }

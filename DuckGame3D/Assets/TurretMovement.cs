@@ -56,8 +56,6 @@ public class TurretMovement : MonoBehaviour
                     lineRenderer.enabled = true;
 
                     hit.collider.gameObject.GetComponent<Stats>().TakeDamage(20f);
-
-                    hit.collider.gameObject.GetComponent<Stats>().reduceSpeed();
                     shootingSpeed = 0;
                 }
                 else
