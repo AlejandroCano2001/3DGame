@@ -41,7 +41,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (!GetComponent<Stats>().isDead)
         {
-            if (justJumped)
+            if (justJumped && isGrounded)
             {
                 rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
                 anim.SetTrigger("Jump");

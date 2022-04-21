@@ -6,7 +6,7 @@ public class HealthItem : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" || other.tag == "Enemy")
         {
             other.gameObject.GetComponent<Stats>().health = 100; 
 

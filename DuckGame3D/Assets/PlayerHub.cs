@@ -41,4 +41,9 @@ public class PlayerHub : MonoBehaviour
         Damage.text = playerStats.damage.ToString();
         time.text = stopwatch.ToString();
     }
+
+    public TimeSpan getStopWatch()
+    {
+        return this.stopwatch;
+    }
 }

@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public LayerMask enemyLayers;
 
+    public Transform[] alcantarillas;
+
     private bool threatened = false;
 
     // Start is called before the first frame update
@@ -31,6 +33,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameObject.GetComponent<Stats>().health <= 50f)
+        {
+            HealthItem healthItem = FindObjectOfType<HealthItem>();
+            agent.SetDestination(healthItem.transform.position);
+        }
+
         Bullet bullet = FindObjectOfType<Bullet>();
 
         Debug.Log(bullet == null);
@@ -57,7 +65,7 @@ public class EnemyController : MonoBehaviour
             {
                 float distance = Vector3.Distance(target.position, transform.position);
 
-                if (distance <= radius && !threatened)
+                if (distance <= radius && !threatened && gameObject.GetComponent<Stats>().health > 50)
                 {
                     agent.SetDestination(target.position);
 
