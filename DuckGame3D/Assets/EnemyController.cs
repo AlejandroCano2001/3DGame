@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float radius = 10f;
+    public float outOfRange = 25f;
     public Animator anim;
     public float attackingSpeed = 2f;
 
@@ -28,15 +29,23 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().speed;
         agent.autoRepath = true;
+        //agent.updateRotation = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(GetComponent<Stats>().health);
+
         if(gameObject.GetComponent<Stats>().health <= 50f)
         {
             HealthItem healthItem = FindObjectOfType<HealthItem>();
-            agent.SetDestination(healthItem.transform.position);
+
+            if(healthItem != null)
+            {
+                agent.SetDestination(healthItem.transform.position);
+                agent.isStopped = false;
+            }
         }
 
         Bullet bullet = FindObjectOfType<Bullet>();
@@ -48,9 +57,10 @@ public class EnemyController : MonoBehaviour
             threatened = true;
 
             gameObject.transform.LookAt(bullet.transform);
-            
+
             //Flee
-            agent.SetDestination(new Vector3(transform.position.x - 4, transform.position.y, transform.position.z));
+
+            //agent.SetDestination(new Vector3(transform.position.x - 4, transform.position.y, transform.position.z));
         }
         else
         {
@@ -68,6 +78,7 @@ public class EnemyController : MonoBehaviour
                 if (distance <= radius && !threatened && gameObject.GetComponent<Stats>().health > 50)
                 {
                     agent.SetDestination(target.position);
+                    agent.isStopped = false;
 
                     if (distance <= agent.stoppingDistance)
                     {
@@ -82,6 +93,10 @@ public class EnemyController : MonoBehaviour
                         //Face the target
                         FaceTarget();
                     }
+                }
+                else if(distance >= outOfRange)
+                {
+                    agent.isStopped = true;
                 }
 
                 anim.SetBool("Running", agent.velocity != Vector3.zero);
