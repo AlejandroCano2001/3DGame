@@ -15,6 +15,7 @@ public class TurretMovement : MonoBehaviour
     public float laserMaxLength = 10f;
 
     private bool enemyFound = false;
+    private bool isActivated = false;
 
     private void Start()
     {
@@ -29,43 +30,46 @@ public class TurretMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shootingSpeed += Time.deltaTime;
-
-        if(!enemyFound)
+        if(isActivated)
         {
-            gun.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-        }
+            shootingSpeed += Time.deltaTime;
 
-        RaycastHit hit;
-        if(Physics.Raycast(gunTip.position, gunTip.rotation * Vector3.forward, out hit))
-        {
-            //Debug.DrawRay(transform.position, gunTip.rotation * Vector3.forward * hit.distance, Color.blue);
-            //Debug.Log("Did Hit " + hit.collider.gameObject.tag);
-
-            if(hit.collider.gameObject.tag == "Player")
+            if (!enemyFound)
             {
-                enemyFound = true;
+                gun.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+            }
 
-                if(shootingSpeed >= 1 && !hit.collider.gameObject.GetComponent<Stats>().isDead)
+            RaycastHit hit;
+            if (Physics.Raycast(gunTip.position, gunTip.rotation * Vector3.forward, out hit))
+            {
+                //Debug.DrawRay(transform.position, gunTip.rotation * Vector3.forward * hit.distance, Color.blue);
+                //Debug.Log("Did Hit " + hit.collider.gameObject.tag);
+
+                if (hit.collider.gameObject.tag == "Player")
                 {
-                    //Debug.Log("gunTip position: " + gun.transform.position);
-                    //Debug.Log("hit point position: " + hit.point);
+                    enemyFound = true;
 
-                    lineRenderer.SetPosition(0, gunTip.transform.position);
-                    lineRenderer.SetPosition(1, hit.point);
-                    lineRenderer.enabled = true;
+                    if (shootingSpeed >= 1 && !hit.collider.gameObject.GetComponent<Stats>().isDead)
+                    {
+                        //Debug.Log("gunTip position: " + gun.transform.position);
+                        //Debug.Log("hit point position: " + hit.point);
 
-                    hit.collider.gameObject.GetComponent<Stats>().TakeDamage(20f);
-                    shootingSpeed = 0;
+                        lineRenderer.SetPosition(0, gunTip.transform.position);
+                        lineRenderer.SetPosition(1, hit.point);
+                        lineRenderer.enabled = true;
+
+                        hit.collider.gameObject.GetComponent<Stats>().TakeDamage(20f);
+                        shootingSpeed = 0;
+                    }
+                    else
+                    {
+                        Invoke("TurnOffLaser", 0.1f);
+                    }
                 }
                 else
                 {
-                    Invoke("TurnOffLaser", 0.1f);
+                    enemyFound = false;
                 }
-            }
-            else
-            {
-                enemyFound = false;
             }
         }
     }

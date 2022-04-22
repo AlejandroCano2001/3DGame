@@ -18,7 +18,10 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     public LayerMask enemyLayers;
 
-    public Transform[] alcantarillas;
+    public GameObject[] turrets;
+    public Stack<GameObject> turretsStack;
+
+    public GameObject cure;
 
     private bool threatened = false;
 
@@ -29,28 +32,41 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().speed;
         agent.autoRepath = true;
-        //agent.updateRotation = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetComponent<Stats>().health);
+        //Debug.Log(GetComponent<Stats>().health);
+        
+        foreach(GameObject turret in turrets)
+        {
+            // Hacer un método donde incluya este bucle foreach
+        }
 
         if(gameObject.GetComponent<Stats>().health <= 50f)
         {
-            HealthItem healthItem = FindObjectOfType<HealthItem>();
-
-            if(healthItem != null)
+            if(cure != null)
             {
-                agent.SetDestination(healthItem.transform.position);
+                agent.ResetPath();
+                agent.SetDestination(cure.transform.position);
                 agent.isStopped = false;
+
+                if (Vector3.Distance(cure.transform.position, transform.position) <= agent.stoppingDistance)
+                {
+                    Destroy(cure);
+                    gameObject.GetComponent<Stats>().health = 100f;
+
+                    Debug.Log("Zombie's health: " + gameObject.GetComponent<Stats>().health);
+
+                    agent.ResetPath();
+                }
             }
         }
 
         Bullet bullet = FindObjectOfType<Bullet>();
 
-        Debug.Log(bullet == null);
+        //Debug.Log(bullet == null);
 
         if (bullet != null)
         {
