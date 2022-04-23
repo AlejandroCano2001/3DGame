@@ -19,11 +19,13 @@ public class EnemyController : MonoBehaviour
     public LayerMask enemyLayers;
 
     public GameObject[] turrets;
-    public Stack<GameObject> turretsStack;
+    GameObject targetedTurret;
 
     public GameObject cure;
 
     private bool threatened = false;
+    private bool playerFound = false;
+    private int cnt = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,16 +34,35 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().speed;
         agent.autoRepath = true;
+
+        targetedTurret = turrets[cnt]; //PONER A NULL
     }
 
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(GetComponent<Stats>().health);
-        
-        foreach(GameObject turret in turrets)
+
+        if(targetedTurret != null && !playerFound) // MIRAR ÚNICAMENTE SI !PLAYERFOUND
         {
-            // Hacer un método donde incluya este bucle foreach
+            //IF TARGETED == NULL, ENTONCES BUSCAR TORRETA MÁS CERCANA. EN CASO CONTRARIO, EL SIGUIENTE CÓDIGO:
+            Debug.Log("Target: " + targetedTurret);
+
+            agent.isStopped = false;
+            agent.SetDestination(targetedTurret.transform.position);
+
+            //Debug.Log("Distancia a torreta: " + Vector3.Distance(targetedTurret.transform.position, transform.position) + "Stopping distance: " + agent.stoppingDistance);
+            
+            if (Vector3.Distance(targetedTurret.transform.position, transform.position) <= agent.stoppingDistance + 0.2)
+            {
+                Debug.Log("Ya activado!");
+
+                //UNA VEZ ACTIVADA, VOLVER A PONER TARGETED == NULL
+
+                targetedTurret.GetComponent<TurretMovement>().activateTurret();
+                targetedTurret = turrets[cnt++];
+                agent.ResetPath();
+            }
         }
 
         if(gameObject.GetComponent<Stats>().health <= 50f)
@@ -52,7 +73,7 @@ public class EnemyController : MonoBehaviour
                 agent.SetDestination(cure.transform.position);
                 agent.isStopped = false;
 
-                if (Vector3.Distance(cure.transform.position, transform.position) <= agent.stoppingDistance)
+                if (Vector3.Distance(cure.transform.position, transform.position) <= agent.stoppingDistance + 0.2)
                 {
                     Destroy(cure);
                     gameObject.GetComponent<Stats>().health = 100f;
@@ -93,6 +114,8 @@ public class EnemyController : MonoBehaviour
 
                 if (distance <= radius && !threatened && gameObject.GetComponent<Stats>().health > 50)
                 {
+                    playerFound = true;
+                    agent.ResetPath();
                     agent.SetDestination(target.position);
                     agent.isStopped = false;
 
@@ -112,7 +135,7 @@ public class EnemyController : MonoBehaviour
                 }
                 else if(distance >= outOfRange)
                 {
-                    agent.isStopped = true;
+                    playerFound = false;
                 }
 
                 anim.SetBool("Running", agent.velocity != Vector3.zero);

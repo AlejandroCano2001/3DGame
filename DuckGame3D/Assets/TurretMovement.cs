@@ -15,7 +15,7 @@ public class TurretMovement : MonoBehaviour
     public float laserMaxLength = 10f;
 
     private bool enemyFound = false;
-    private bool isActivated = false;
+    private bool isActivated;
 
     private void Start()
     {
@@ -25,6 +25,8 @@ public class TurretMovement : MonoBehaviour
         lineRenderer.startWidth = laserWidth;
         lineRenderer.endWidth = laserWidth;
         //lineRenderer.useWorldSpace = true;
+
+        isActivated = false;
     }
 
     // Update is called once per frame
@@ -77,5 +79,15 @@ public class TurretMovement : MonoBehaviour
     private void TurnOffLaser()
     {
         lineRenderer.enabled = false;
+    }
+
+    public bool getIsActivated()
+    {
+        return this.isActivated;
+    }
+
+    public void activateTurret()
+    {
+        this.isActivated = true;
     }
 }
