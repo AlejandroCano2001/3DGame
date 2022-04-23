@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 13361
+  controlID: 7280
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
-  controlID: 13362
+  controlID: 7244
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 13363
+  controlID: 7213
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -217,10 +217,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 82.79999}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4efbffff184800000a490000044c00001a4f0000
+      m_ExpandedIDs: 4efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.086144, y: 1.5813489, z: 33.307827}
+    m_Target: {x: 3.6314554, y: -3.0570254, z: 41.077545}
     speed: 2
-    m_Value: {x: -2.086144, y: 1.5813489, z: 33.307827}
+    m_Value: {x: 3.6314554, y: -3.0570254, z: 41.077545}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -357,13 +357,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.14760667, y: -0.5490289, z: 0.099234186, w: 0.81667906}
+    m_Target: {x: 0.28662786, y: -0.061141815, z: 0.018329132, w: 0.9559307}
     speed: 2
-    m_Value: {x: 0.14760427, y: -0.54902, z: 0.09923258, w: 0.8166658}
+    m_Value: {x: 0.28662306, y: -0.061140794, z: 0.018328827, w: 0.95591474}
   m_Size:
-    m_Target: 2.772114
+    m_Target: 8.308926
     speed: 2
-    m_Value: 2.772114
+    m_Value: 8.308926
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -617,21 +617,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
+    - Assets/Prefabs/Characters
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
+  - Assets/Prefabs/Characters
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Alejandro\DuckGame3D\DuckGame3D
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 81}
-    m_SelectedIDs: 305a0000
-    m_LastClickedID: 23088
+    m_SelectedIDs: f6590000
+    m_LastClickedID: 23030
     m_ExpandedIDs: 00000000f4580000f6580000f8580000fa580000fc58000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -685,8 +685,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8c4b0000
-    m_LastClickedInstanceID: 19340
+    m_SelectedInstanceIDs: 264b0000
+    m_LastClickedInstanceID: 19238
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300004a8600007e8700004a4c0000445c0000f88a0000c87600000000000074890000d89a0000a29d0000
     m_RenameOverlay:
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 18342
+  m_LastSelectedObjectID: -1426
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -827,8 +827,8 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 18342
-  m_LastVerticalScrollValue: 455.20007
+  m_LastInspectedObjectInstanceID: -1426
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0

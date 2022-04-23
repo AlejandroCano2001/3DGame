@@ -973,7 +973,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24663201}
-  m_LocalRotation: {x: 0.2042779, y: -0.00000001883166, z: 0.000000003929759, w: 0.97891295}
+  m_LocalRotation: {x: 0.2042779, y: 0.000000018831656, z: -0.0000000039297583, w: 0.97891295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   player: {fileID: 23286860}
   hub: {fileID: 23286862}
   zombieSpawner: {fileID: 1580043054}
-  zombie: {fileID: 735029358}
+  zombie: {fileID: 1235517940464732421, guid: ca6e8450bff60664eaeefc6e75a33a1b, type: 3}
 --- !u!4 &104851005
 Transform:
   m_ObjectHideFlags: 0
@@ -14106,7 +14106,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699876802}
-  m_LocalRotation: {x: 0.20427792, y: -0.000000018833626, z: 0.0000000039292747, w: 0.97891295}
+  m_LocalRotation: {x: 0.20427792, y: 0.000000018833367, z: -0.0000000039280548, w: 0.97891295}
   m_LocalPosition: {x: 1.1930392, y: 2.286595, z: 9.1625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -15102,11 +15102,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4809255288549338, guid: 6acf036e14cf86b4dbc2f4bbc89f7bf0, type: 3}
   m_PrefabInstance: {fileID: 729796254}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &735029358 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1235517940464732421, guid: ca6e8450bff60664eaeefc6e75a33a1b, type: 3}
-  m_PrefabInstance: {fileID: 1336351349}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &735437298
 PrefabInstance:

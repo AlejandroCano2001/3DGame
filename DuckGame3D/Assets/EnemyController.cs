@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
 
     private bool threatened = false;
     private bool playerFound = false;
-    private int cnt = 0;
+    private bool hasBeenChasing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +34,6 @@ public class EnemyController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().speed;
         agent.autoRepath = true;
-
-        targetedTurret = turrets[cnt]; //PONER A NULL
     }
 
     // Update is called once per frame
@@ -43,25 +41,29 @@ public class EnemyController : MonoBehaviour
     {
         //Debug.Log(GetComponent<Stats>().health);
 
-        if(targetedTurret != null && !playerFound) // MIRAR ÚNICAMENTE SI !PLAYERFOUND
+        if(!playerFound)
         {
-            //IF TARGETED == NULL, ENTONCES BUSCAR TORRETA MÁS CERCANA. EN CASO CONTRARIO, EL SIGUIENTE CÓDIGO:
-            Debug.Log("Target: " + targetedTurret);
-
-            agent.isStopped = false;
-            agent.SetDestination(targetedTurret.transform.position);
-
-            //Debug.Log("Distancia a torreta: " + Vector3.Distance(targetedTurret.transform.position, transform.position) + "Stopping distance: " + agent.stoppingDistance);
-            
-            if (Vector3.Distance(targetedTurret.transform.position, transform.position) <= agent.stoppingDistance + 0.2)
+            if(targetedTurret == null)
             {
-                Debug.Log("Ya activado!");
+                targetedTurret = lookForNearestTurret();
+            }
+            else
+            {
+                //Debug.Log("Target: " + targetedTurret);
 
-                //UNA VEZ ACTIVADA, VOLVER A PONER TARGETED == NULL
+                agent.isStopped = false;
+                agent.SetDestination(targetedTurret.transform.position);
 
-                targetedTurret.GetComponent<TurretMovement>().activateTurret();
-                targetedTurret = turrets[cnt++];
-                agent.ResetPath();
+                //Debug.Log("Distancia a torreta: " + Vector3.Distance(targetedTurret.transform.position, transform.position) + "Stopping distance: " + agent.stoppingDistance);
+
+                if (Vector3.Distance(targetedTurret.transform.position, transform.position) <= agent.stoppingDistance + 0.2)
+                {
+                    //Debug.Log("Ya activado!");
+
+                    targetedTurret.GetComponent<TurretMovement>().activateTurret();
+                    targetedTurret = null;
+                    agent.ResetPath();
+                }
             }
         }
 
@@ -117,6 +119,7 @@ public class EnemyController : MonoBehaviour
                     playerFound = true;
                     agent.ResetPath();
                     agent.SetDestination(target.position);
+                    hasBeenChasing = true;
                     agent.isStopped = false;
 
                     if (distance <= agent.stoppingDistance)
@@ -136,6 +139,12 @@ public class EnemyController : MonoBehaviour
                 else if(distance >= outOfRange)
                 {
                     playerFound = false;
+
+                    if(hasBeenChasing)
+                    {
+                        agent.ResetPath();
+                        hasBeenChasing = false;
+                    }
                 }
 
                 anim.SetBool("Running", agent.velocity != Vector3.zero);
@@ -175,5 +184,37 @@ public class EnemyController : MonoBehaviour
 
             enemy.gameObject.GetComponent<Stats>().TakeDamage(damage);
         }
+    }
+
+    private GameObject lookForNearestTurret()
+    {
+        GameObject nearestTurret = null;
+        bool allActivated = true;
+
+        foreach(GameObject turret in turrets)
+        {
+            if(!turret.GetComponent<TurretMovement>().getIsActivated())
+            {
+                allActivated = false;
+            }
+        }
+
+        if(!allActivated)
+        {
+            nearestTurret = turrets[0];
+
+            foreach (GameObject turret in turrets)
+            {
+                if ((Vector3.Distance(turret.transform.position, transform.position) <= Vector3.Distance(nearestTurret.transform.position, transform.position)
+                    && !turret.GetComponent<TurretMovement>().getIsActivated()) || (!turret.GetComponent<TurretMovement>().getIsActivated() && nearestTurret.GetComponent<TurretMovement>().getIsActivated()))
+                {
+                    nearestTurret = turret;
+                }
+            }
+        }
+
+        //Debug.Log("Torreta seleccionada: " + nearestTurret.gameObject.name);
+
+        return nearestTurret;
     }
 }
