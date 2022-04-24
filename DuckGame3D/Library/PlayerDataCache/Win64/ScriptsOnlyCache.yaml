@@ -27,16 +27,21 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.Text
   sceneClasses:
@@ -82,51 +87,57 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1492}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 1546}
     - Class: 114
-      Script: {instanceID: 1964}
+      Script: {instanceID: 1738}
     - Class: 114
-      Script: {instanceID: 2014}
+      Script: {instanceID: 1962}
     - Class: 114
-      Script: {instanceID: 2130}
+      Script: {instanceID: 2012}
     - Class: 114
-      Script: {instanceID: 2188}
+      Script: {instanceID: 2128}
     - Class: 114
-      Script: {instanceID: 2382}
+      Script: {instanceID: 2186}
     - Class: 114
-      Script: {instanceID: 2392}
+      Script: {instanceID: 2380}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 2390}
     - Class: 114
-      Script: {instanceID: 2508}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2548}
+      Script: {instanceID: 2506}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2546}
     - Class: 114
-      Script: {instanceID: 2646}
+      Script: {instanceID: 2618}
     - Class: 114
-      Script: {instanceID: 2762}
+      Script: {instanceID: 2644}
     - Class: 114
-      Script: {instanceID: 2886}
+      Script: {instanceID: 2686}
     - Class: 114
-      Script: {instanceID: 3266}
+      Script: {instanceID: 2760}
     - Class: 114
-      Script: {instanceID: 3328}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3572}
+      Script: {instanceID: 3124}
     - Class: 114
-      Script: {instanceID: 4062}
+      Script: {instanceID: 3264}
     - Class: 114
-      Script: {instanceID: 4158}
+      Script: {instanceID: 3326}
     - Class: 114
-      Script: {instanceID: 4256}
+      Script: {instanceID: 3570}
     - Class: 114
-      Script: {instanceID: 4518}
+      Script: {instanceID: 4060}
     - Class: 114
-      Script: {instanceID: 4812}
+      Script: {instanceID: 4156}
     - Class: 114
-      Script: {instanceID: 5228}
+      Script: {instanceID: 4254}
+    - Class: 114
+      Script: {instanceID: 4516}
+    - Class: 114
+      Script: {instanceID: 4810}
+    - Class: 114
+      Script: {instanceID: 5226}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -144,6 +155,10 @@ ScriptsOnlyBuild:
     - Class: 195
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 208
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
@@ -400,7 +415,7 @@ ScriptsOnlyBuild:
     className: CinemachineVirtualCamera
   - hash:
       serializedVersion: 2
-      Hash: 5f0c9511fe8d70f4c957f64452c00912
+      Hash: a6d0b0104cdf747e42a283c375dd27bf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerHub
@@ -610,13 +625,13 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: b59e6d5bbb01b6a7ff1a2a311ad7a0f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
   - hash:
       serializedVersion: 2
-      Hash: ac6a92ff9a47bdc6b5965eaa12ff031d
+      Hash: e81715b0f9aba99e47da920fd0772452
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ThirdPersonMovement
@@ -820,7 +835,7 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: f7a73c1d7e21c7026cd3e0c5d77baf0f
+      Hash: a231a7380eb9104a33736f76b465a151
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyController

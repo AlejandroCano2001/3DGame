@@ -90,4 +90,9 @@ public class TurretMovement : MonoBehaviour
     {
         this.isActivated = true;
     }
+
+    public void deactivateTurret()
+    {
+        this.isActivated = false;
+    }
 }

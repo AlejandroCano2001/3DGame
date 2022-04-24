@@ -24,12 +24,17 @@ public class ThirdPersonMovement : MonoBehaviour
     public float attackRange;
     public LayerMask enemyLayers;
 
+    public GameObject[] turrets;
+
+    public GameObject deactivateKey;
+
     // Lista de animaciones de combate
 
     private void Start() {
         
         speed = GetComponent<Stats>().speed;
         rb = GetComponent<Rigidbody>();
+        deactivateKey.SetActive(false);
     }
 
     // Update is called once per frame
@@ -75,6 +80,48 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             cadence = 0f;
             Attack();
+        }
+
+        if (Vector3.Distance(transform.position, turrets[0].transform.position) <= 2)
+        {
+            deactivateKey.SetActive(true);
+        }
+        else if (Vector3.Distance(transform.position, turrets[1].transform.position) <= 2)
+        {
+            deactivateKey.SetActive(true);
+        }
+        else if (Vector3.Distance(transform.position, turrets[2].transform.position) <= 2)
+        {
+            deactivateKey.SetActive(true);
+        }
+        else if (Vector3.Distance(transform.position, turrets[3].transform.position) <= 2)
+        {
+            deactivateKey.SetActive(true);
+        }
+        else
+        {
+            deactivateKey.SetActive(false);
+        }
+
+        if (Vector3.Distance(transform.position, turrets[0].transform.position) <= 2 && Input.GetKey(KeyCode.E))
+        {
+            Debug.Log("Turn it off!");
+            turrets[0].GetComponent<TurretMovement>().deactivateTurret();
+        }
+        else if (Vector3.Distance(transform.position, turrets[1].transform.position) <= 2 && Input.GetKey(KeyCode.E))
+        {
+            Debug.Log("Turn it off!");
+            turrets[1].GetComponent<TurretMovement>().deactivateTurret();
+        }
+        else if (Vector3.Distance(transform.position, turrets[2].transform.position) <= 2 && Input.GetKey(KeyCode.E))
+        {
+            Debug.Log("Turn it off!");
+            turrets[2].GetComponent<TurretMovement>().deactivateTurret();
+        }
+        else if (Vector3.Distance(transform.position, turrets[3].transform.position) <= 2 && Input.GetKey(KeyCode.E))
+        {
+            Debug.Log("Turn it off!");
+            turrets[3].GetComponent<TurretMovement>().deactivateTurret();
         }
     }
 

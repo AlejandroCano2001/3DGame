@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Transform zombieSpawner;
     public GameObject zombie;
 
-    private float timer = 30f;
+    //private float timer = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        /*timer -= Time.deltaTime;
 
         if(timer <= 0)
         {
             Instantiate(zombie, zombieSpawner.position, Quaternion.identity);
             timer = 30f;
-        }
+        }*/
 
         if(player)
         {
