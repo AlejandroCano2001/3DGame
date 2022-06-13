@@ -12,12 +12,14 @@ public class ThirdPersonMovement : MonoBehaviour
     public Animator anim;
     public float cadence = 1f;
     public float addedSpeed = 1f;
+    public GameObject boomerang;
 
     private float speed;
     private float rotVelocity = 8f;
     private bool isGrounded;
     private Rigidbody rb;
     private bool justJumped = false;
+    private float throwPower = 40f;
 
     // Attacking variables
     public Transform attackPoint;
@@ -80,6 +82,11 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             cadence = 0f;
             Attack();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            throwBoomerang();
         }
 
         if (Vector3.Distance(transform.position, turrets[0].transform.position) <= 2)
@@ -145,5 +152,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
             enemy.gameObject.GetComponent<Stats>().TakeDamage(damage);
         }
+    }
+
+    public void throwBoomerang()
+    {
+        GameObject boomerangInstance = Instantiate(boomerang, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1.5f, gameObject.transform.position.z), Quaternion.identity);
+        boomerangInstance.GetComponent<Rigidbody>().AddForce(transform.forward * throwPower, ForceMode.Impulse);
+        boomerangInstance.GetComponent<Rigidbody>().AddTorque(boomerangInstance.transform.TransformDirection(Vector3.right) * 100, ForceMode.Impulse);
     }
 }
