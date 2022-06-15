@@ -1,0 +1,5 @@
+@relation FuncionCuadratica
+@attribute  controlVar0  numeric
+@attribute  controlVar1  numeric
+@attribute  varObjetivo  numeric
+@data 
