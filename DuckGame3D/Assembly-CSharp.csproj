@@ -56,10 +56,12 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Aprendiz_2_incognitas.cs" />
     <Compile Include="Assets\BulletBehaviour.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunsMenu.cs" />
     <Compile Include="Assets\TurretMovement.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
+    <Compile Include="Assets\Scripts\AprendizajeAutomatico.cs" />
     <Compile Include="Assets\Scripts\ShieldItem.cs" />
     <Compile Include="Assets\Scripts\StrengthItem.cs" />
     <Compile Include="Assets\PlayerHub.cs" />
@@ -76,8 +78,7 @@
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\MortarManager.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
-    <Compile Include="Assets\Scripts\AprendizajeAutomatico.cs" />
-    <Compile Include="Assets\Scripts\Aprendiz_2_incognitas.cs" />
+    <Compile Include="Assets\PlatformTrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.SwingAWT.dll" />
@@ -334,53 +335,20 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.AWT.WinForms">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.AWT.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.API">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.API.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Security">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Tools">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Tools.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Runtime">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Util">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Util.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Misc">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Misc.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.XPath">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.XPath.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.OpenJDK.Text">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.WebServices">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Crypto">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Parse">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Parse.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Media">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Beans">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Beans.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Management">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Management.dll</HintPath>
@@ -394,9 +362,6 @@
     <Reference Include="IKVM.Reflection">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.Reflection.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.OpenJDK.Remoting">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Remoting.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Charsets">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Charsets.dll</HintPath>
     </Reference>
@@ -406,6 +371,48 @@
     <Reference Include="IKVM.OpenJDK.Naming">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Naming.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.AWT.WinForms">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.AWT.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Tools">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.WebServices">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Crypto">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.Parse">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Parse.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Beans">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Beans.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Remoting">
+      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Remoting.dll</HintPath>
+    </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Transform">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Transform.dll</HintPath>
     </Reference>
@@ -414,12 +421,6 @@
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.Bind">
       <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.XML.Bind.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime.JNI">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.Runtime.JNI.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Core">
-      <HintPath>Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
