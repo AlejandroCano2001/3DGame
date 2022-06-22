@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\AprendizajeAutomatico.cs" />
     <Compile Include="Assets\Scripts\ShieldItem.cs" />
     <Compile Include="Assets\Scripts\StrengthItem.cs" />
+    <Compile Include="Assets\PlatformTrap.cs" />
     <Compile Include="Assets\PlayerHub.cs" />
     <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Laser.cs" />
@@ -78,7 +79,7 @@
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\MortarManager.cs" />
     <Compile Include="Assets\Low Poly Guns\Scripts\GunView.cs" />
-    <Compile Include="Assets\PlatformTrap.cs" />
+    <Compile Include="Assets\Scripts\PetBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Weka\ikvm-7.2.4630.5\bin\IKVM.OpenJDK.SwingAWT.dll" />
