@@ -51,7 +51,7 @@ public class Aprendiz_2_incognitas : MonoBehaviour
         casosEntrenamientoZ = new weka.core.Instances(new java.io.FileReader("Assets/ExperienciasZ.arff"));  //Lee fichero con las variables y experiencias
 
         //texto.text = "ENTRENAMIENTO: crea una tabla con las Fx utilizadas y distancias alcanzadas (Fy calculada=" + Fy_calculada.ToString("0.00")+" N)";
-        print("Datos de entrada= Fy=" + Fy_calculada + " Fx variables de 1 a " + valorMaximoFx+"  "+((valorMaximoFx==0 || Fy_calculada==0)?" ERROR: alguna fuerza es siempre 0":""));
+        //print("Datos de entrada= Fy=" + Fy_calculada + " Fx variables de 1 a " + valorMaximoFx+"  "+((valorMaximoFx==0 || Fy_calculada==0)?" ERROR: alguna fuerza es siempre 0":""));
         if (casosEntrenamientoX.numInstances() < 10)
             for (float Fx = 1; Fx <= valorMaximoFx; Fx = Fx + pasoFx)               //BUCLE de planificación de la fuerza FX durante el entrenamiento
             {
@@ -64,7 +64,7 @@ public class Aprendiz_2_incognitas : MonoBehaviour
 
                     Instance casoAaprenderX = new Instance(casosEntrenamientoX.numAttributes());
                     Instance casoAaprenderZ = new Instance(casosEntrenamientoZ.numAttributes());
-                    print("con fuerzas:   Fy_fijo=" + Fy_calculada + "  y  Fx=" + Fx + "  se alcanzó una distancia de " + rb.transform.position.x);
+                    //print("con fuerzas:   Fy_fijo=" + Fy_calculada + "  y  Fx=" + Fx + "  se alcanzó una distancia de " + rb.transform.position.x);
                     casoAaprenderX.setDataset(casosEntrenamientoX);                           //crea un registro de experiencia
                     casoAaprenderZ.setDataset(casosEntrenamientoZ);                           //crea un registro de experiencia
                     casoAaprenderX.setValue(0, Fx);                                          //guarda el dato de la fuerza utilizada
@@ -106,12 +106,12 @@ public class Aprendiz_2_incognitas : MonoBehaviour
         saver2.writeBatch();
 
         //EVALUACION DEL CONOCIMIENTO APRENDIDO: 
-        print("intancias=" + casosEntrenamientoX.numInstances());
+        //print("intancias=" + casosEntrenamientoX.numInstances());
         if (casosEntrenamientoX.numInstances() >= 10)
         {
             Evaluation evaluador = new Evaluation(casosEntrenamientoX);                   //...Opcional: si tien mas de 10 ejemplo, estima la posible precisión
             evaluador.crossValidateModel(saberPredecirFuerzaX, casosEntrenamientoX, 10, new java.util.Random(1));
-            print("El Error Absoluto Promedio durante el entrenamiento fue de " + evaluador.meanAbsoluteError().ToString("0.000000") + " N");
+            //print("El Error Absoluto Promedio durante el entrenamiento fue de " + evaluador.meanAbsoluteError().ToString("0.000000") + " N");
         }
 
         distanciaObjetivoX = UnityEngine.Random.Range(1.0f, 15.0f);                          //Distancia de la Canasta (... Opcional: generada aleatoriamente)
@@ -143,12 +143,12 @@ public class Aprendiz_2_incognitas : MonoBehaviour
 
             mejorFuerzaX = (float)saberPredecirFuerzaX.classifyInstance(casoPrueba);  //predice la fuerza dada la distancia utilizando el algoritmo M5P
             mejorFuerzaZ = (float)saberPredecirFuerzaZ.classifyInstance(casoPrueba2);  //predice la fuerza dada la distancia utilizando el algoritmo M5P
-            print("Durante el juego, se observó Y=" + distanciaObjetivoX + ". El NPC calcula la fuerza X =" + mejorFuerzaX);
+            //print("Durante el juego, se observó Y=" + distanciaObjetivoX + ". El NPC calcula la fuerza X =" + mejorFuerzaX);
 
             Instanciabullet = Instantiate(bullet, shootingSpot.position, Quaternion.identity);                     //Utiliza la bullet física del juego (si no existe la crea)
             r = Instanciabullet.GetComponent<Rigidbody>();
             r.AddForce(new Vector3(mejorFuerzaX, Fy_calculada, mejorFuerzaZ), ForceMode.Impulse);          //y porfin la la lanza en el videojuego con la fuerza encontrara
-            print("Se lanzó una bullet con fuerzas:   Fy_fijo = "+Fy_calculada+"  y  Fx =" + mejorFuerzaX );
+            //print("Se lanzó una bullet con fuerzas:   Fy_fijo = "+Fy_calculada+"  y  Fx =" + mejorFuerzaX );
             ESTADO = "Acción realizada";
 
         }
@@ -157,8 +157,8 @@ public class Aprendiz_2_incognitas : MonoBehaviour
             //texto.text = "Para una canasta a " + distanciaObjetivoX.ToString("0.000") + " m, la fuerza Fx a utilizar será de " + mejorFuerzaX.ToString("0.000") + "N  (Fy calculada=" + Fy_calculada.ToString("0.00") + " N)";
             if (r.transform.position.y < 0)                                            //cuando la bullet cae por debajo de 0 m
             {                                                                          //escribe la distancia en x alcanzada
-                print("La canasta está a una distancia de " + distanciaObjetivoX + " m");
-                print("La bullet lanzada llegó a " + r.transform.position.x + ". El error fue de " + (r.transform.position.x - distanciaObjetivoX).ToString("0.000000") + " m");
+                //print("La canasta está a una distancia de " + distanciaObjetivoX + " m");
+                //print("La bullet lanzada llegó a " + r.transform.position.x + ". El error fue de " + (r.transform.position.x - distanciaObjetivoX).ToString("0.000000") + " m");
                 r.isKinematic = true;
                 ESTADO = "FIN";
             }
